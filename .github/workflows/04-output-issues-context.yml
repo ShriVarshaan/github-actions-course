@@ -1,0 +1,13 @@
+name: Output context on creation of new issue
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  output-issues-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: output-issues-context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
